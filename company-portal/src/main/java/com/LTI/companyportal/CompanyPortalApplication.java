@@ -35,9 +35,9 @@ public class CompanyPortalApplication {
 	public Employee getEmployeeById(@PathVariable("id") ObjectId id) {
 		return employeeRepository.findBy_id(id);
 	}
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public void modifyEmployeeById(@PathVariable("id") ObjectId id, @Valid @RequestBody Employee employee){
-		employee.set_id(ObjectId.get());
+	@RequestMapping(value = "/add", method = RequestMethod.PUT)
+	public void modifyEmployeeById(@Valid @RequestBody Employee employee){
+		//employee.set_id(ObjectId.get());		
 		employeeRepository.save(employee);
 	}
 

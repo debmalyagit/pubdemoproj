@@ -1,11 +1,14 @@
 package com.LTI.companyportal.models;
 
+import javax.persistence.GeneratedValue;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 public class Employee {
 	
 	@Id
+	@GeneratedValue
 	public ObjectId _id;
 	
 	public String name;
@@ -14,25 +17,25 @@ public class Employee {
 	public String pan;
 	
 	public float annual_package;
-	public float tds;
+	private float tds;
 
-	public Employee(ObjectId _id, String name, String address, String email, String pan, float annual_package) {
-		this._id = _id;
+	public Employee(/*ObjectId _id,*/ String name, String address, String email, String pan, float annual_package) {
+		//this._id = _id;
 		this.name = name;
 		this.address = address;
 		this.email = email;
 		this.pan = pan;
 		this.annual_package = annual_package;
-		this.tds = (this.annual_package / 12) * (10/100);
+		this.tds = (((annual_package/12) * 10)/100);
 	}
 	
 	public ObjectId get_id() {
 		return _id;
 	}
 
-	public void set_id(ObjectId _id) {
+	/*public void set_id(ObjectId _id) {
 		this._id = _id;
-	}
+	}*/
 
 	public String getName() {
 		return name;
