@@ -11,5 +11,4 @@ import com.LTI.companyportal.models.Employee;
 
 public interface EmployeeRepository extends MongoRepository<Employee, String> {
 	Employee findBy_id(ObjectId _id);
-	//Employee findByName(String name);
 }
