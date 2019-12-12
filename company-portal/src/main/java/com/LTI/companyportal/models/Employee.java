@@ -5,20 +5,24 @@ import javax.persistence.GeneratedValue;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 public class Employee {
 	
 	@Id
 	@GeneratedValue
-	public ObjectId _id;
+	@JsonIgnore  public ObjectId _id;
 	
 	public String name;
-	public String address;
+	@JsonIgnore public String address;
 	public String email;
 	public String pan;
 	
-	public float annual_package;
+	@JsonIgnore public float annual_package;
 	private float tds;
-
+	
+	public Employee() {};
 	public Employee(/*ObjectId _id,*/ String name, String address, String email, String pan, float annual_package) {
 		//this._id = _id;
 		this.name = name;
@@ -76,7 +80,32 @@ public class Employee {
 	public void setAnnual_package(float annual_package) {
 		this.annual_package = annual_package;
 	}
+	public float getTds() {
+		return tds;
+	}
+	public void setTds() {
+		this.tds = (((this.annual_package/12) * 10)/100);
+	} 
 	
-	
+	 // Creating toString 
+    @Override
+    public String toString() 
+    { 
+        return "Employee [name="
+            + name 
+            + ", address="
+            + address 
+            + ", pan="
+            + pan
+            + ", annual_package="
+            + annual_package
+            + ", email="
+            + email
+            + ", tds="
+            + tds
+            + "]"; 
+    }
+	  
+    
 
 }
